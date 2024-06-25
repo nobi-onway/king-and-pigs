@@ -19,13 +19,24 @@ public class Aiming : MonoBehaviour
     private void Start()
     {
         inputManager.OnPointerDown  += ()=> _rotationCoroutine = StartCoroutine(RotateCoroutine());
-        inputManager.OnPointerUp += () => StopCoroutine(_rotationCoroutine);
+        inputManager.OnPointerUp += () => 
+        { 
+            StopCoroutine(_rotationCoroutine);
+            ResetRotation();
+        };
     }
 
+    private void ResetRotation() 
+    {
+        FirePosition.gameObject.SetActive(false);
+        FirePosition.rotation = Quaternion.identity;
+        _isAimingUp = true;
+    }
 
 
     IEnumerator RotateCoroutine()
     {
+        FirePosition.gameObject.SetActive(true);       
         while (true)
         {
             int direc = _isAimingUp ? 1 : -1; 
