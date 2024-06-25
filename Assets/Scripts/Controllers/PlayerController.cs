@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Firing _firing;
     [SerializeField]
-    private AnimatorController _animatorController;
+    private Animator _animator;
 
     private void Start()
     {
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
         {
             _aiming.StopAiming();
             _firing.Fire();
-            _animatorController.TriggerAnimation("attack_trig");
+            _animator.SetTrigger("attack_trig");
         };
 
         _inputManager.OnPointerDown += () => { _aiming.StartAiming(); };
