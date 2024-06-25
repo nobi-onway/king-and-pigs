@@ -447,9 +447,10 @@ GameObject:
   - component: {fileID: 1733990888}
   - component: {fileID: 1733990889}
   - component: {fileID: 1733990890}
+  - component: {fileID: 1733990891}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -542,6 +543,39 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1733990891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733990887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ef55092fff3014cbeabc2da55bdcbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHeal: 0
+  _maxHeal: 1
+--- !u!1 &1970163247 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8266922735881856635, guid: 47d4b60987dedd84180d2ec34a927e74, type: 3}
+  m_PrefabInstance: {fileID: 3233892425179657144}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1970163253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970163247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ef55092fff3014cbeabc2da55bdcbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHeal: 0
+  _maxHeal: 3
 --- !u!1 &2064206260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,7 +1158,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8266922735881856635, guid: 47d4b60987dedd84180d2ec34a927e74, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1970163253}
   m_SourcePrefab: {fileID: 100100000, guid: 47d4b60987dedd84180d2ec34a927e74, type: 3}
 --- !u!156049354 &4563332128123894016
 Grid:
