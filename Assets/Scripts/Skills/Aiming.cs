@@ -9,26 +9,20 @@ public class Aiming : MonoBehaviour
     [SerializeField] private float _minAngleZ;
     [SerializeField] private float _maxAngleZ;
     [SerializeField] private float _speedRotate;
-    [SerializeField] private bool _isAimingUp = true;
+    private bool _isAimingUp = true;
     
-
-    [SerializeField] private InputManager inputManager;
-
     private Coroutine _rotationCoroutine;
 
-    private void Start()
+    public void StartAiming()
     {
-        inputManager.OnPointerDown += () => 
-        {
-            ResetRotation();
-            _rotationCoroutine = StartCoroutine(RotateCoroutine());
-        };
+        ResetRotation();
+        _rotationCoroutine = StartCoroutine(RotateCoroutine());
+    }
 
-        inputManager.OnPointerUp += () => 
-        { 
-            StopCoroutine(_rotationCoroutine);
-            FirePosition.gameObject.SetActive(false);
-        };
+    public void StopAiming()
+    {
+        StopCoroutine(_rotationCoroutine);
+        FirePosition.gameObject.SetActive(false);
     }
 
     private void ResetRotation() 
