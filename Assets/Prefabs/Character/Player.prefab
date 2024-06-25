@@ -95,11 +95,11 @@ GameObject:
   - component: {fileID: 383856481339817294}
   - component: {fileID: 4392818978230628621}
   - component: {fileID: 3465449139774649120}
-  - component: {fileID: 5505135996036854557}
   - component: {fileID: 6204101510816331492}
+  - component: {fileID: 6818073311000266776}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,19 +151,6 @@ MonoBehaviour:
   _minAngleZ: 0
   _maxAngleZ: 90
   _speedRotate: 30
---- !u!114 &5505135996036854557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8266922735881856635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e48903b4d60ba428b1bad56d81f079, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 7022068672728429764}
 --- !u!114 &6204101510816331492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +166,21 @@ MonoBehaviour:
   _inputManager: {fileID: 0}
   _aiming: {fileID: 3465449139774649120}
   _firing: {fileID: 4392818978230628621}
-  _animatorController: {fileID: 5505135996036854557}
+  _animator: {fileID: 7022068672728429764}
+--- !u!114 &6818073311000266776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266922735881856635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ef55092fff3014cbeabc2da55bdcbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHealth: 0
+  _maxHealth: 3
 --- !u!1 &8345439699667273356
 GameObject:
   m_ObjectHideFlags: 0
