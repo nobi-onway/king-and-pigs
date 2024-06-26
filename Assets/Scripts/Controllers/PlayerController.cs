@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Animator _animator;
     [SerializeField]
+    private HealthController _healthController;
 
     private void Start()
     {
@@ -19,7 +20,12 @@ public class PlayerController : MonoBehaviour
         {
             _aiming.StopAiming();
             _firing.Fire();
-            _animator.SetTrigger("attack_trig");
+            _animator.Play("attack");
+        };
+
+        _healthController.OnHealthChange += (currentHealth) =>
+        {
+            _animator.Play("got_hit");
         };
 
         _inputManager.OnPointerDown += () => { _aiming.StartAiming(); };
