@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Firing _firing;
     [SerializeField]
     private Animator _animator;
+    [SerializeField]
 
     private void Start()
     {
