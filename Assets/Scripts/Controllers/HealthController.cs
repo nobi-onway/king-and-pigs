@@ -9,7 +9,14 @@ public class HealthController : MonoBehaviour
     public event Action<int> OnHealthChange;
     public bool IsEnabled { get; set; }
     public int CurrentHealth
-    { get { return _currentHealth; } set { _currentHealth = value; OnHealthChange(value); } }
+    { 
+        get { return _currentHealth; } 
+        set 
+        { 
+            _currentHealth = value < 0 ? 0 : value; 
+            OnHealthChange(value); 
+        } 
+    }
 
     private void Start()
     {
