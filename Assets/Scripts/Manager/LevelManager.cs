@@ -5,7 +5,8 @@ public class LevelManager : MonoBehaviour, IStateManager<LevelState>
 {
     public static LevelManager Instance { get; private set; }
 
-    private LevelController _currentLevelController;
+    [SerializeField]
+    private LevelController _levelController;
     private int _currentLevel => 1;
 
     private LevelState _currentState;
@@ -35,6 +36,8 @@ public class LevelManager : MonoBehaviour, IStateManager<LevelState>
 
     private void Start()
     {
+        _levelController.Init();
+
         OnStateChange += (state) =>
         {
             switch (state)
@@ -56,9 +59,14 @@ public class LevelManager : MonoBehaviour, IStateManager<LevelState>
                     break;
             }
         };
+
+        State = LevelState.playing;
     }
 
-    private void LoadLevel() { }
+    private void LoadLevel() 
+    {
+        _levelController.LoadMap(_currentLevel);
+    }
 }
 
 public enum LevelState { playing, losing, winning, nextLevel }

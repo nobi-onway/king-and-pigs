@@ -1,41 +1,50 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
+public class CharacterPosition
+{
+    [SerializeField]
+    private Transform _transform;
+    [SerializeField]
+    private GameObject _character;
+    public GameObject Character => _character;
+
+    public void SetUpPosition()
+    {
+        _character.transform.position = _transform.position;
+    }
+}
+
 public class Map : MonoBehaviour
-{   
-    public List<Transform> _listPositionEnemy;   
-    public Transform _positionPlayer;
+{
+    [SerializeField]
+    private List<CharacterPosition> _characterPositionList;
 
-   
-    public void OnActive(bool isActive)
+    private bool _isActive;
+    public bool IsActive
     {
-        gameObject.SetActive(isActive);
-    }
-    private void SetPositionPlayer(GameObject playerPrefabs)
-    {
-        playerPrefabs.transform.position = _positionPlayer.position;
-    }
-
-    private void SetPositionEnemy(List<GameObject> listEnemyPrefabs)
-    {
-        for(int i = 0; i< listEnemyPrefabs.Count; i++)
+        get => _isActive;
+        set
         {
-            if (i > _listPositionEnemy.Count) return;
-            listEnemyPrefabs[i].transform.position = _listPositionEnemy[i].position;
+            _isActive = value;
+            gameObject.SetActive(value);
         }
     }
-    
-    public void SettingMap(GameObject playerPrefabs, List<GameObject> listEnemyPrefabs)
+
+    private void Start()
     {
-        StartCoroutine(SetMapPosition(playerPrefabs, listEnemyPrefabs));
+        LoadCharacters();
     }
 
-    IEnumerator SetMapPosition(GameObject playerPrefabs, List<GameObject> listEnemyPrefabs)
+    private void LoadCharacters()
     {
-        SetPositionPlayer(playerPrefabs);
-        SetPositionEnemy(listEnemyPrefabs);
-        yield return new WaitForSeconds(1);
-        OnActive(true);
+        for(int i = 0; i < _characterPositionList.Count; i++)
+        {
+            CharacterPosition characterPosition = _characterPositionList[i];
+            Instantiate(characterPosition.Character);
+            characterPosition.SetUpPosition();
+        }
     }
 }

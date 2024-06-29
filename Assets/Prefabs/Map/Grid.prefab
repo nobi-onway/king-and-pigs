@@ -2248,3 +2248,6 @@ MonoBehaviour:
   _listPositionEnemy:
   - {fileID: 73987461749762349}
   _positionPlayer: {fileID: 2811092029280475537}
+  _characterPositionList:
+  - _position: {fileID: 0}
+    _character: {fileID: 0}
