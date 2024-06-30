@@ -7,17 +7,11 @@ public class HealthBarController : MonoBehaviour
 {
     [SerializeField] private Transform _placeHeart;
     [SerializeField] private HeartController _heartController;
-    [SerializeField] private HealthController _healthController;
+    public HealthController HealthController { get; set; }
 
     private List<HeartController> _listHeart;
     private int _currentHeart => _listHeart.FindAll(heart => heart.IsActive).Count;
 
-    private void Start()
-    {
-        Init(3);
-
-        _healthController.OnHealthChange += SetHeart;
-    }
     public void Init(int health)
     {
         _listHeart = new List<HeartController>();
@@ -28,7 +22,9 @@ public class HealthBarController : MonoBehaviour
             heartController.IsActive = true;
 
             _listHeart.Add(heartController);
-        }       
+        }
+
+        HealthController.OnHealthChange += SetHeart;
     }
 
     private void SetHeart(int currentHealth)

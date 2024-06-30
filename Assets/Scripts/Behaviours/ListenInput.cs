@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class ListenInput : MonoBehaviour
 {
     public event Action OnPointerDown;
     public event Action OnPointerUp;

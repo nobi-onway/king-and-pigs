@@ -18,7 +18,7 @@ public class HealthController : MonoBehaviour
         } 
     }
 
-    private void Start()
+    public void Init()
     {
         _currentHealth = _maxHealth;
         IsEnabled = true;

@@ -1,19 +1,28 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IController
 {
     [SerializeField]
     private Animator _animator;
     [SerializeField]
     private HealthController _healthController;
 
-    private void Start()
+    public MonoBehaviour MonoBehaviour => this;
+
+    public void Init()
     {
-        _healthController.OnHealthChange += (currentHealth) => 
+        _healthController.Init();
+
+        _healthController.OnHealthChange += (currentHealth) =>
         {
             StartCoroutine(GotHit(currentHealth));
         };
+    }
+
+    public void Reset()
+    {
+        _healthController.Init();
     }
 
     private IEnumerator GotHit(int currentHealth)
@@ -30,4 +39,5 @@ public class EnemyController : MonoBehaviour
         _animator.Play("dead");
         _healthController.IsEnabled = false;
     }
+
 }
