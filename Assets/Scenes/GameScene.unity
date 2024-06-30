@@ -426,54 +426,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379086701}
   m_CullTransparentMesh: 1
---- !u!1 &442365281
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 442365282}
-  - component: {fileID: 442365283}
-  m_Layer: 5
-  m_Name: Input Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &442365282
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 442365281}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2064206264}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &442365283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 442365281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73867090276635f45a196b9497df3d32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &492739743
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,6 +593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelController: {fileID: 1475180599}
+  _healthBarController: {fileID: 2098773669}
 --- !u!4 &563734532
 Transform:
   m_ObjectHideFlags: 0
@@ -1111,7 +1064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2064206261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1188,7 +1141,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 55356086}
-  - {fileID: 442365282}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1208,7 +1160,7 @@ GameObject:
   - component: {fileID: 2098773670}
   - component: {fileID: 2098773669}
   m_Layer: 5
-  m_Name: Top_PlaceHeart
+  m_Name: Top_HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1249,7 +1201,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _placeHeart: {fileID: 379086702}
   _heartController: {fileID: 9098289009337989559, guid: 9c3d1860bf2dad44b87445eb530f10b1, type: 3}
-  _healthController: {fileID: 0}
 --- !u!222 &2098773670
 CanvasRenderer:
   m_ObjectHideFlags: 0

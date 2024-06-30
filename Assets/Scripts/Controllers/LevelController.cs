@@ -27,13 +27,17 @@ public class LevelController : MonoBehaviour
         MapSettings mapSettings = GameResourceManager.Instance.GetMapSetting(level - 1);
 
         _currentLoadedMap = GetLoadedMapAtLevel(mapSettings);
+
         if (_currentLoadedMap == null)
         {
             Instantiate(mapSettings.Map, _mapHolder);
+
             _loadedMapList.Add(mapSettings);
             _currentLoadedMap = mapSettings;
         }
 
         _currentLoadedMap.Map.IsActive = true;
     }
+
+    public Map GetMap() => _currentLoadedMap.Map;
 }

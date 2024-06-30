@@ -1,10 +1,9 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IController
 {
     [SerializeField]
-    private InputManager _inputManager;
-
+    private ListenInput _listenInput;
     [SerializeField]
     private Aiming _aiming;
     [SerializeField]
@@ -14,9 +13,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private HealthController _healthController;
 
-    private void Start()
+    public MonoBehaviour MonoBehaviour => this;
+
+    public void Init()
     {
-        _inputManager.OnPointerUp += () =>
+        _healthController.Init();
+
+        _listenInput.OnPointerUp += () =>
         {
             _aiming.StopAiming();
             _firing.Fire();
@@ -28,6 +31,11 @@ public class PlayerController : MonoBehaviour
             _animator.Play("got_hit");
         };
 
-        _inputManager.OnPointerDown += () => { _aiming.StartAiming(); };
+        _listenInput.OnPointerDown += () => { _aiming.StartAiming(); };
+    }
+
+    public void Reset()
+    {
+        _healthController.Init();
     }
 }

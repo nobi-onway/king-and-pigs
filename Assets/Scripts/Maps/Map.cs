@@ -22,6 +22,8 @@ public class Map : MonoBehaviour
     [SerializeField]
     private List<CharacterPosition> _characterPositionList;
 
+    private List<IController> _characterControllerList;
+
     private bool _isActive;
     public bool IsActive
     {
@@ -30,21 +32,48 @@ public class Map : MonoBehaviour
         {
             _isActive = value;
             gameObject.SetActive(value);
-        }
-    }
 
-    private void Start()
-    {
-        LoadCharacters();
+            if (_isActive) LoadCharacters();
+            if (!_isActive) ResetCharacters();
+        }
     }
 
     private void LoadCharacters()
     {
+        _characterControllerList = new List<IController>();
         for(int i = 0; i < _characterPositionList.Count; i++)
         {
             CharacterPosition characterPosition = _characterPositionList[i];
-            Instantiate(characterPosition.Character);
+            IController controllerClone = Instantiate(characterPosition.Character).GetComponent<IController>();
+
+            controllerClone.Init();
+            _characterControllerList.Add(controllerClone);
             characterPosition.SetUpPosition();
         }
+    }
+
+    private void ResetCharacters()
+    {
+        if (_characterControllerList == null) return;
+
+        for (int i = 0; i < _characterControllerList.Count; i++)
+        {
+            IController controller = _characterControllerList[i];
+            controller.Reset();
+        }
+    }
+
+    public PlayerController GetPlayer()
+    {
+        PlayerController playerController = null;
+
+        for (int i = 0; i < _characterControllerList.Count; i++)
+        {
+            playerController = _characterControllerList[i].MonoBehaviour.GetComponent<PlayerController>();
+
+            if (playerController) break;
+        }
+
+        return playerController;
     }
 }

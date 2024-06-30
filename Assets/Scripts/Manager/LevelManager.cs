@@ -7,6 +7,8 @@ public class LevelManager : MonoBehaviour, IStateManager<LevelState>
 
     [SerializeField]
     private LevelController _levelController;
+    [SerializeField]
+    private HealthBarController _healthBarController;
     private int _currentLevel => 1;
 
     private LevelState _currentState;
@@ -46,10 +48,10 @@ public class LevelManager : MonoBehaviour, IStateManager<LevelState>
                     LoadLevel();
                     break;
                 case LevelState.losing:
-                    // show losing panel
+                    Debug.Log("Losing");
                     break;
                 case LevelState.winning:
-                    // show winning panel
+                    Debug.Log("Winning");
                     break;
                 case LevelState.nextLevel:
                     // current level ++
@@ -66,6 +68,15 @@ public class LevelManager : MonoBehaviour, IStateManager<LevelState>
     private void LoadLevel() 
     {
         _levelController.LoadMap(_currentLevel);
+
+        PlayerController playerController = _levelController.GetMap().GetPlayer();
+
+        if(playerController)
+        {
+            HealthController healthController = playerController.GetComponent<HealthController>();
+            _healthBarController.HealthController = healthController;
+            _healthBarController.Init(healthController.CurrentHealth);
+        }
     }
 }
 
