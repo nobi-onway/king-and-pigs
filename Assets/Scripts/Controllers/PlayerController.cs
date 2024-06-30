@@ -29,6 +29,11 @@ public class PlayerController : MonoBehaviour, IController
         _healthController.OnHealthChange += (currentHealth) =>
         {
             _animator.Play("got_hit");
+            if (currentHealth == 0) 
+            {
+                _healthController.IsEnabled = false;
+                LevelManager.Instance.CheckMapWinLose(); 
+            }
         };
 
         _listenInput.OnPointerDown += () => { _aiming.StartAiming(); };
