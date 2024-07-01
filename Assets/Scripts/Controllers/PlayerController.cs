@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IController
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour, IController
 
     public MonoBehaviour MonoBehaviour => this;
 
+    public event Action OnDead; 
+
     public void Init()
     {
         _healthController.Init();
@@ -29,10 +32,10 @@ public class PlayerController : MonoBehaviour, IController
         _healthController.OnHealthChange += (currentHealth) =>
         {
             _animator.Play("got_hit");
-            if (currentHealth == 0) 
+            if (currentHealth == 0)
             {
                 _healthController.IsEnabled = false;
-                LevelManager.Instance.CheckMapWinLose(); 
+                Dead();
             }
         };
 
@@ -42,5 +45,11 @@ public class PlayerController : MonoBehaviour, IController
     public void Reset()
     {
         _healthController.Init();
+        OnDead = null;
+    }
+
+    private void Dead()
+    {
+        OnDead?.Invoke();
     }
 }

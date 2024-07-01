@@ -1,14 +1,18 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
     private List<MapSettings> _loadedMapList;
-    
+
     private MapSettings _currentLoadedMap;
 
-    [SerializeField] 
+    [SerializeField]
     private Transform _mapHolder;
+
+    public event Action OnLose;
+    public event Action OnWin;
 
     public void Init()
     {
@@ -22,7 +26,7 @@ public class LevelController : MonoBehaviour
 
     public void LoadMap(int level)
     {
-        if(_currentLoadedMap != null) _currentLoadedMap.Map.IsActive = false;
+        if (_currentLoadedMap != null) _currentLoadedMap.Map.IsActive = false;
 
         MapSettings mapSettings = GameResourceManager.Instance.GetMapSetting(level - 1);
 
@@ -37,6 +41,17 @@ public class LevelController : MonoBehaviour
         }
 
         _currentLoadedMap.Map.IsActive = true;
+
+        _currentLoadedMap.Map.OnEnemyDead += () =>
+        {
+            int numsOfAliveEnemy = _currentLoadedMap.Map.GetAliveEnemies();
+            if (numsOfAliveEnemy == 0) OnWin?.Invoke();
+        };
+
+        _currentLoadedMap.Map.OnPlayerDead += () =>
+        {
+            OnLose?.Invoke();
+        };
     }
 
     public Map GetMap() => _currentLoadedMap.Map;
