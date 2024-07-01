@@ -4,34 +4,20 @@ using UnityEngine;
 
 public class UIInGame : MonoBehaviour
 {
-    #region SingleTon
-    public static UIInGame Instance { get; private set; }
-    private void Awake()
-    {
-        if (Instance == null) Instance = this;
-
-        if (Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
-    #endregion
-
     [SerializeField] UIWinLosePanel _uiWinLosePanel;
-
 
     private void Start()
     {
         SetHideAllUI();
-        
+
+        LevelManager.Instance.OnStateChange += (state) =>
+        {
+            if (state == LevelState.winning) ShowUIWinLose(true);
+            if (state == LevelState.losing) ShowUIWinLose(false);
+        };
     }
 
-    private void InitUI()
-    {
-
-    }
-    public void ShowUIWinLose(bool isWin)
+    private void ShowUIWinLose(bool isWin)
     {
         _uiWinLosePanel.Init(isWin);
         _uiWinLosePanel.IsActive = true;
@@ -40,6 +26,4 @@ public class UIInGame : MonoBehaviour
     {
         _uiWinLosePanel.IsActive = false;
     }
-
-    
 }

@@ -24,6 +24,11 @@ public class Map : MonoBehaviour
 
     private List<IController> _characterControllerList;
 
+    private List<EnemyController> enemyControllerList;
+
+    public event Action OnEnemyDead;
+    public event Action OnPlayerDead;
+
     private bool _isActive;
     public bool IsActive
     {
@@ -34,8 +39,15 @@ public class Map : MonoBehaviour
             gameObject.SetActive(value);
 
             if (_isActive) LoadCharacters();
-            if (!_isActive) ResetCharacters();
+            if (!_isActive) ResetMap();
         }
+    }
+
+    private void ResetMap()
+    {
+        OnEnemyDead = null;
+        OnPlayerDead = null;
+        ResetCharacters();
     }
 
     private void LoadCharacters()
@@ -50,6 +62,25 @@ public class Map : MonoBehaviour
             _characterControllerList.Add(controllerClone);
             characterPosition.SetUpPosition();
         }
+
+        SetUpEnemyEvent();
+        SetUpPlayerEvent();
+    }
+
+    private void SetUpEnemyEvent()
+    {
+        List<EnemyController> enemyControllers = GetEnemies();
+
+        for(int i = 0; i < enemyControllers.Count; i++)
+        {
+            enemyControllers[i].OnDead += () => OnEnemyDead?.Invoke();
+        }
+    }
+
+    private void SetUpPlayerEvent()
+    {
+        PlayerController playerController = GetPlayer();
+        playerController.OnDead += () => OnPlayerDead?.Invoke();
     }
 
     private void ResetCharacters()
@@ -77,20 +108,36 @@ public class Map : MonoBehaviour
         return playerController;
     }
 
-    public bool CheckEnemyAllDead()
+    private List<EnemyController> GetEnemies()
     {
-        EnemyController enemyController;
-        int countEnemyAlive = 0;
-        for (int i = 0; i < _characterControllerList.Count - 1; i++)
+        List<EnemyController> enemyControllerList = new List<EnemyController>();
+
+        for (int i = 0; i < _characterControllerList.Count; i++)
         {
-            if (_characterControllerList[i].MonoBehaviour.GetComponent<EnemyController>())
-            {
-                enemyController = _characterControllerList[i].MonoBehaviour.GetComponent<EnemyController>();                
-                if (enemyController.GetIsEnableHealthController() == true) countEnemyAlive++;
-                else continue;
-            }
-          
+            EnemyController enemyController = _characterControllerList[i].MonoBehaviour.GetComponent<EnemyController>();
+
+            if (enemyController == null) continue;
+
+            enemyControllerList.Add(enemyController);
         }
-        return countEnemyAlive > 0 ? false: true;
+
+        Debug.Log("Enemy count: " + enemyControllerList.Count);
+
+        return enemyControllerList;
+    }
+
+    public int GetAliveEnemies()
+    {
+        int count = 0;
+        List<EnemyController> enemies = GetEnemies();
+
+        for(int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i].IsDead) continue;
+
+            count++;
+        }
+
+        return count;
     }
 }

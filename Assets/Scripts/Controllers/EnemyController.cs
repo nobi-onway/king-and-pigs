@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,6 +8,9 @@ public class EnemyController : MonoBehaviour, IController
     private Animator _animator;
     [SerializeField]
     private HealthController _healthController;
+
+    public event Action OnDead;
+    public bool IsDead { get; private set; }
 
     public MonoBehaviour MonoBehaviour => this;
 
@@ -23,17 +27,15 @@ public class EnemyController : MonoBehaviour, IController
     public void Reset()
     {
         _healthController.Init();
-    }
-    public bool GetIsEnableHealthController()
-    {
-        return _healthController.IsEnabled;
+        IsDead = false;
+        OnDead = null;
     }
 
     private IEnumerator GotHit(int currentHealth)
     {
         _animator.Play("got_hit");
 
-        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
 
         if (currentHealth <= 0) Dead();
     }
@@ -42,7 +44,9 @@ public class EnemyController : MonoBehaviour, IController
     {
         _animator.Play("dead");
         _healthController.IsEnabled = false;
-        LevelManager.Instance.CheckMapWinLose();
+        IsDead = true;
+        Debug.Log("Dead");
+        OnDead?.Invoke();
     }
 
 }
