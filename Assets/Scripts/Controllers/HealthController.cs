@@ -14,7 +14,7 @@ public class HealthController : MonoBehaviour
         set 
         { 
             _currentHealth = value < 0 ? 0 : value; 
-            OnHealthChange(value); 
+            OnHealthChange(value);
         } 
     }
 

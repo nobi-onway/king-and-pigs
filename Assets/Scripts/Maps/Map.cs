@@ -76,4 +76,21 @@ public class Map : MonoBehaviour
 
         return playerController;
     }
+
+    public bool CheckEnemyAllDead()
+    {
+        EnemyController enemyController;
+        int countEnemyAlive = 0;
+        for (int i = 0; i < _characterControllerList.Count - 1; i++)
+        {
+            if (_characterControllerList[i].MonoBehaviour.GetComponent<EnemyController>())
+            {
+                enemyController = _characterControllerList[i].MonoBehaviour.GetComponent<EnemyController>();                
+                if (enemyController.GetIsEnableHealthController() == true) countEnemyAlive++;
+                else continue;
+            }
+          
+        }
+        return countEnemyAlive > 0 ? false: true;
+    }
 }

@@ -49,11 +49,14 @@ public class LevelManager : MonoBehaviour, IStateManager<LevelState>
                     break;
                 case LevelState.losing:
                     Debug.Log("Losing");
+                    UIInGame.Instance.ShowUIWinLose(false);
                     break;
                 case LevelState.winning:
                     Debug.Log("Winning");
+                    UIInGame.Instance.ShowUIWinLose(true);
                     break;
                 case LevelState.nextLevel:
+                    Debug.Log("Next Level");
                     // current level ++
                     // change state to playing
                     break;
@@ -77,6 +80,19 @@ public class LevelManager : MonoBehaviour, IStateManager<LevelState>
             _healthBarController.HealthController = healthController;
             _healthBarController.Init(healthController.CurrentHealth);
         }
+    }
+
+    private bool CheckPlayerDead()
+    {
+        HealthController healthControllerPlayer = _levelController.GetMap().GetPlayer().GetComponent<HealthController>();
+        return healthControllerPlayer.IsEnabled;
+    }
+
+    public void CheckMapWinLose()
+    {
+        bool isAllEnemyDead = _levelController.GetMap().CheckEnemyAllDead();
+        if (CheckPlayerDead() == false) State = LevelState.losing;
+        if(CheckPlayerDead() == true && isAllEnemyDead == true) State = LevelState.winning;
     }
 }
 

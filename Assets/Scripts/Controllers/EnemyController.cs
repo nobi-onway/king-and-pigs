@@ -24,6 +24,10 @@ public class EnemyController : MonoBehaviour, IController
     {
         _healthController.Init();
     }
+    public bool GetIsEnableHealthController()
+    {
+        return _healthController.IsEnabled;
+    }
 
     private IEnumerator GotHit(int currentHealth)
     {
@@ -38,6 +42,7 @@ public class EnemyController : MonoBehaviour, IController
     {
         _animator.Play("dead");
         _healthController.IsEnabled = false;
+        LevelManager.Instance.CheckMapWinLose();
     }
 
 }
