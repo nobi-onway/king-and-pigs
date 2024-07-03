@@ -559,7 +559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3aa5e3aa51057478ef106c85655707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spacing: {x: 0, y: -10}
+  _spacing: {x: 0, y: -150}
   canvas: {fileID: 2064206263}
   uiCamera: {fileID: 519420031}
   panelRectTransform: {fileID: 1363545551}
