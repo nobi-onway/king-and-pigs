@@ -6,12 +6,6 @@ public class ListenInput : MonoBehaviour
     public event Action OnPointerDown;
     public event Action OnPointerUp;
 
-    private void Start()
-    {
-        OnPointerDown += () => Debug.Log("On Pointer Down");
-        OnPointerUp += () => Debug.Log("On Pointer Up");
-    }
-
     private void Update()
     {
         if(Input.GetMouseButtonDown(0))
