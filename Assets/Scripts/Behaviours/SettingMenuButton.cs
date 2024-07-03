@@ -9,10 +9,16 @@ public class SettingMenuButton : MonoBehaviour
 
     private Button _mainButton;
     SettingMenuButtonItem[] _menuItems;
-    bool isExpended = false;
+    bool isExpanded = false;
 
     Vector2 _mainButtonPosition;
     int _itemsCount;
+
+    [Header("Canvas and Camera References")]
+    [SerializeField] private Canvas canvas;
+    [SerializeField] private Camera uiCamera;
+    [SerializeField] private RectTransform panelRectTransform;
+
     void Start()
     {
         _itemsCount = transform.childCount - 1;
@@ -36,32 +42,58 @@ public class SettingMenuButton : MonoBehaviour
     {
         for(int i = 0; i < _itemsCount; i++)
         {
-            _menuItems[i]._trans.position = _mainButtonPosition;
+            if (_menuItems[i] != null)
+            {
+                _menuItems[i]._trans.position = _mainButton.transform.position;
+            }
         }
     }
 
     private void ToggleMenu()
     {
-        isExpended = !isExpended;
-        if (isExpended)
+        isExpanded = !isExpanded;
+        if (isExpanded)
         {
-            Debug.Log("Open");
-            for(int i = 0; i < _itemsCount; i++)
+            for (int i = 0; i < _itemsCount; i++)
             {
-                _menuItems[i]._trans.position = _mainButtonPosition + _spacing * (i + 1);
+                if (_menuItems[i] != null)
+                {
+                    Vector2 targetPosition = _mainButton.GetComponent<RectTransform>().anchoredPosition + _spacing * (i + 1);
+                    _menuItems[i]._trans.GetComponent<RectTransform>().anchoredPosition = targetPosition;
+                }
             }
         }
         else
         {
-            Debug.Log("Cloes");
             for (int i = 0; i < _itemsCount; i++)
             {
-                _menuItems[i]._trans.position = _mainButtonPosition;
+                if (_menuItems[i] != null)
+                {
+                    _menuItems[i]._trans.position = _mainButton.transform.position;
+                }
             }
         }
     }
+    private Vector3 GetWorldPosition(Vector3 screenPosition)
+    {
+        if (canvas.renderMode == RenderMode.ScreenSpaceCamera && uiCamera != null)
+        {
+            Vector2 viewportPosition = uiCamera.ScreenToViewportPoint(screenPosition);
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(canvas.GetComponent<RectTransform>(), viewportPosition, uiCamera, out Vector3 worldPosition);
+            return worldPosition;
+        }
+        else if (canvas.renderMode == RenderMode.WorldSpace)
+        {
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(canvas.GetComponent<RectTransform>(), screenPosition, uiCamera, out Vector3 worldPosition);
+            return worldPosition;
+        }
+        return screenPosition;
+    }
     private void OnDestroy()
     {
-        _mainButton.onClick.RemoveListener(ToggleMenu);
+        if (_mainButton != null)
+        {
+            _mainButton.onClick.RemoveListener(ToggleMenu);
+        }
     }
 }
