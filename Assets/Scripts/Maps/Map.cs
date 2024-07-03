@@ -121,8 +121,6 @@ public class Map : MonoBehaviour
             enemyControllerList.Add(enemyController);
         }
 
-        Debug.Log("Enemy count: " + enemyControllerList.Count);
-
         return enemyControllerList;
     }
 

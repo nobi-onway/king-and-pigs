@@ -1,21 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIWinLosePanel : MonoBehaviour
 {
-    private bool _isActive;
-    public bool IsActive { get=> _isActive; set { _isActive = value; gameObject.SetActive(_isActive); } }
-
-    [SerializeField] private MiddleUIWinLose _middle_WinLose;
-    [SerializeField] private BottomUIWinLose _bottom_WinLose;
-
-
-    public void Init(bool isWin)
+    private CanvasGroup _canvasGroup;
+    private void Start()
     {
-        _middle_WinLose.Init(isWin);
-        _bottom_WinLose.Init(isWin);
+        _canvasGroup = GetComponent<CanvasGroup>();
+
+        LevelManager.Instance.OnStateChange += (state) =>
+        {
+            EnableUIIf(state == LevelState.winning || state == LevelState.losing);
+        };
     }
 
+    private void EnableUIIf(bool enabled)
+    {
+        _canvasGroup.alpha = enabled ? 1  : 0;
+        _canvasGroup.interactable = enabled;
+        _canvasGroup.blocksRaycasts = enabled;
+    }
 }
