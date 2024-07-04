@@ -2139,8 +2139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _winNavigationButtons:
-  - {fileID: 6830853603372167313}
   - {fileID: 4279337070796031562}
+  - {fileID: 692763507346487362}
   _loseNavigationButtons:
   - {fileID: 6830853603372167313}
   - {fileID: 692763507346487362}

@@ -52,9 +52,12 @@ TagManager:
   - name: Decor
     uniqueID: 3565967325
     locked: 0
+  - name: Weapon
+    uniqueID: 3249114821
+    locked: 0
+  - name: Character
+    uniqueID: 2717332301
+    locked: 0
   - name: UI
     uniqueID: 56938241
-    locked: 0
-  - name: Player
-    uniqueID: 2717332301
     locked: 0

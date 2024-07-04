@@ -19,12 +19,11 @@ public class CharacterPosition
 
 public class Map : MonoBehaviour
 {
+    public int Id { get; private set; }
     [SerializeField]
     private List<CharacterPosition> _characterPositionList;
 
     private List<IController> _characterControllerList;
-
-    private List<EnemyController> enemyControllerList;
 
     public event Action OnEnemyDead;
     public event Action OnPlayerDead;
@@ -38,9 +37,22 @@ public class Map : MonoBehaviour
             _isActive = value;
             gameObject.SetActive(value);
 
-            if (_isActive) LoadCharacters();
+            if (_isActive) SetUpMap();
+
             if (!_isActive) ResetMap();
         }
+    }
+
+    public void Init(MapSettings mapSettings)
+    {
+        Id = mapSettings.Id;
+        LoadCharacters();
+    }
+
+    private void SetUpMap()
+    {
+        SetUpEnemyEvent();
+        SetUpPlayerEvent();
     }
 
     private void ResetMap()
@@ -53,18 +65,16 @@ public class Map : MonoBehaviour
     private void LoadCharacters()
     {
         _characterControllerList = new List<IController>();
+
         for(int i = 0; i < _characterPositionList.Count; i++)
         {
             CharacterPosition characterPosition = _characterPositionList[i];
-            IController controllerClone = Instantiate(characterPosition.Character).GetComponent<IController>();
+            IController controllerClone = Instantiate(characterPosition.Character, transform).GetComponent<IController>();
 
             controllerClone.Init();
             _characterControllerList.Add(controllerClone);
             characterPosition.SetUpPosition();
         }
-
-        SetUpEnemyEvent();
-        SetUpPlayerEvent();
     }
 
     private void SetUpEnemyEvent()

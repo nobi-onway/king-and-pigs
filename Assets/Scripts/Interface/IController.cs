@@ -8,3 +8,5 @@ public interface IController
     public MonoBehaviour MonoBehaviour { get; }
     public void Reset();
 }
+
+public enum ControllerState { idle, aiming, firing, dead, winning, losing }

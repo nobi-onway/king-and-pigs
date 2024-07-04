@@ -14,32 +14,93 @@ public class PlayerController : MonoBehaviour, IController
     [SerializeField]
     private HealthController _healthController;
 
+    [SerializeField] 
+    private WeaponController _weaponController;
     public MonoBehaviour MonoBehaviour => this;
 
-    public event Action OnDead; 
+    public event Action OnDead;
+
+    private ControllerState _state;
+    public ControllerState State 
+    {
+        get => _state;
+        set
+        {
+            _state = value;
+            OnStateChange?.Invoke(value);
+        }
+    }
+
+    public event Action<ControllerState> OnStateChange;
+
 
     public void Init()
     {
-        _healthController.Init();
+        InitState();
+        InitListenInput();
+        InitHealth();
+    }
 
-        _listenInput.OnPointerUp += () =>
+    private void InitState()
+    {
+        OnStateChange += (state) =>
         {
-            _aiming.StopAiming();
-            _firing.Fire();
-            _animator.Play("attack");
+            switch(state)
+            {
+                case ControllerState.idle:
+                    break;
+                case ControllerState.aiming:
+                    Aim();
+                    break;
+                case ControllerState.firing:
+                    Fire();
+                    break;
+                case ControllerState.dead:
+                    Dead();
+                    break;
+                case ControllerState.winning:
+                    _healthController.IsEnabled = false;
+                    break;
+            }
         };
+    }
+
+    private void Aim()
+    {
+        if (_firing.IsFiring) return;
+        _aiming.StartAiming();
+    }
+    private void Fire()
+    {
+        if (_firing.IsFiring) return;
+
+        _aiming.StopAiming();
+        _firing.Fire(_weaponController);
+        _animator.Play("attack");
+    }
+
+    private void InitHealth()
+    {
+        _healthController.Init();
 
         _healthController.OnHealthChange += (currentHealth) =>
         {
             _animator.Play("got_hit");
-            if (currentHealth == 0)
-            {
-                _healthController.IsEnabled = false;
-                Dead();
-            }
+            if (currentHealth == 0) State = ControllerState.dead;
+        };
+    }
+
+    private void InitListenInput()
+    {
+        _listenInput.OnPointerDown += () =>
+        {
+            State = ControllerState.aiming;
         };
 
-        _listenInput.OnPointerDown += () => { _aiming.StartAiming(); };
+        _listenInput.OnPointerUp += () =>
+        {
+            State = ControllerState.firing;
+        };
     }
 
     public void Reset()
@@ -50,6 +111,7 @@ public class PlayerController : MonoBehaviour, IController
 
     private void Dead()
     {
+        _healthController.IsEnabled = false;
         OnDead?.Invoke();
     }
 }
