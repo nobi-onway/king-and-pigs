@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour, IController
     {
         _healthController.Init();
 
-        _listenInput.OnPointerUp += (Vector3) =>
+        _listenInput.OnPointerUp += () =>
         {
             _aiming.StopAiming();
             _firing.Fire();
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour, IController
             }
         };
 
-        _listenInput.OnPointerDown += (Vector3) => { _aiming.StartAiming(); };
+        _listenInput.OnPointerDown += () => { _aiming.StartAiming(); };
     }
 
     public void Reset()

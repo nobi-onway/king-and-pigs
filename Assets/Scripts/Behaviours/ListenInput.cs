@@ -5,30 +5,21 @@ using UnityEngine.EventSystems;
 
 public class ListenInput : MonoBehaviour
 {
-    public delegate void PointerAction(Vector3 position);
-    public event PointerAction OnPointerDown;
-    public event PointerAction OnPointerUp;
-    public event PointerAction OnPointerDrag;
-
-    private bool isDragging = false;
+    public event Action OnPointerDown;
+    public event Action OnPointerUp;
 
     private void Update()
     {
         if (IsPointerOverUIElement()) return;
+
         if (Input.GetMouseButtonDown(0))
         {
-            isDragging = true;
-            OnPointerDown?.Invoke(Input.mousePosition);
+            OnPointerDown?.Invoke();
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            isDragging = false;
-            OnPointerUp?.Invoke(Input.mousePosition);
-        }
-        if (isDragging)
-        {
-            OnPointerDrag?.Invoke(Input.mousePosition);
+            OnPointerUp?.Invoke();
         }
     }
 
