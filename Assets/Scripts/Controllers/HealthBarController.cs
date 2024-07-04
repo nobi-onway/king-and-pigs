@@ -14,6 +14,8 @@ public class HealthBarController : MonoBehaviour
 
     public void Init(int health)
     {
+        ResetHeartList();
+
         _listHeart = new List<HeartController>();
 
         for (int i = 0; i < health; i++)
@@ -25,6 +27,14 @@ public class HealthBarController : MonoBehaviour
         }
 
         HealthController.OnHealthChange += SetHeart;
+    }
+
+    private void ResetHeartList()
+    {
+        for(int i = 0; i < _placeHeart.childCount; i++)
+        {
+            Destroy(_placeHeart.GetChild(i).gameObject);
+        }
     }
 
     private void SetHeart(int currentHealth)

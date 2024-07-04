@@ -15,3 +15,7 @@ MonoBehaviour:
   MapList:
   - Name: Map 1
     Map: {fileID: 4488685970152569642, guid: ee28c5e9a7e41e14c8a6ca1f1f98c1c0, type: 3}
+  - Name: Map 2
+    Map: {fileID: 5491796427118350801, guid: 544a1966a68e954469728d2b56766b6d, type: 3}
+  - Name: Map 3
+    Map: {fileID: 2267103893473887697, guid: 936efa05157bc0748a32fe34a9e2acd3, type: 3}

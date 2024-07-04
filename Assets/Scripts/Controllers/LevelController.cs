@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    private List<MapSettings> _loadedMapList;
+    private List<Map> _loadedMapList;
 
-    private MapSettings _currentLoadedMap;
+    private Map _currentLoadedMap;
 
     [SerializeField]
     private Transform _mapHolder;
@@ -16,17 +16,17 @@ public class LevelController : MonoBehaviour
 
     public void Init()
     {
-        _loadedMapList = new List<MapSettings>();
+        _loadedMapList = new List<Map>();
     }
 
-    private MapSettings GetLoadedMapAtLevel(MapSettings mapSettings)
+    private Map GetLoadedMapAtLevel(MapSettings mapSettings)
     {
-        return _loadedMapList.Find(setting => setting.Id == mapSettings.Id);
+        return _loadedMapList.Find(map => map.Id == mapSettings.Id);
     }
 
     public void LoadMap(int level)
     {
-        if (_currentLoadedMap != null) _currentLoadedMap.Map.IsActive = false;
+        if (_currentLoadedMap != null) _currentLoadedMap.IsActive = false;
 
         MapSettings mapSettings = GameResourceManager.Instance.GetMapSetting(level - 1);
 
@@ -34,25 +34,30 @@ public class LevelController : MonoBehaviour
 
         if (_currentLoadedMap == null)
         {
-            Instantiate(mapSettings.Map, _mapHolder);
+            Map mapClone = Instantiate(mapSettings.Map, _mapHolder).GetComponent<Map>();
 
-            _loadedMapList.Add(mapSettings);
-            _currentLoadedMap = mapSettings;
+            _loadedMapList.Add(mapClone);
+            _currentLoadedMap = mapClone;
+            _currentLoadedMap.Init(mapSettings);
         }
 
-        _currentLoadedMap.Map.IsActive = true;
+        _currentLoadedMap.IsActive = true;
 
-        _currentLoadedMap.Map.OnEnemyDead += () =>
+        _currentLoadedMap.OnEnemyDead += () =>
         {
-            int numsOfAliveEnemy = _currentLoadedMap.Map.GetAliveEnemies();
-            if (numsOfAliveEnemy == 0) OnWin?.Invoke();
+            int numsOfAliveEnemy = _currentLoadedMap.GetAliveEnemies();
+            if (numsOfAliveEnemy == 0)
+            {
+                OnWin?.Invoke();
+                _currentLoadedMap.GetPlayer().State = ControllerState.winning;
+            }
         };
 
-        _currentLoadedMap.Map.OnPlayerDead += () =>
+        _currentLoadedMap.OnPlayerDead += () =>
         {
             OnLose?.Invoke();
         };
     }
 
-    public Map GetMap() => _currentLoadedMap.Map;
+    public Map GetMap() => _currentLoadedMap;
 }

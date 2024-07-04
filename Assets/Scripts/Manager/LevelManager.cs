@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour, IStateManager<LevelState>
     private LevelController _levelController;
     [SerializeField]
     private HealthBarController _healthBarController;
-    private int _currentLevel => 1;
+    private int _currentLevel = 1;
 
     private LevelState _currentState;
 
@@ -54,9 +54,9 @@ public class LevelManager : MonoBehaviour, IStateManager<LevelState>
                     Debug.Log("Winning");
                     break;
                 case LevelState.nextLevel:
+                    _currentLevel++;
+                    State = LevelState.playing;
                     Debug.Log("Next Level");
-                    // current level ++
-                    // change state to playing
                     break;
                 default:
                     break;

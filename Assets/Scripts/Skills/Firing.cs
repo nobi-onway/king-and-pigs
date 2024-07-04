@@ -3,11 +3,12 @@ using UnityEngine;
 public class Firing : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _fireObject;
-    [SerializeField]
     private Transform _firePosition;
-    public void Fire()
+    public bool IsFiring = false;
+    public void Fire(WeaponController weapon)
     {
-        Instantiate(_fireObject, _firePosition.position, _firePosition.rotation);
+        IsFiring = true;
+        GameObject weaponClone = Instantiate(weapon.gameObject, _firePosition.position, _firePosition.rotation);
+        weaponClone.GetComponent<WeaponController>().OnWeaponDestroy += () => { IsFiring = false; };
     }
 }

@@ -12,7 +12,8 @@ public class HealthController : MonoBehaviour
     { 
         get { return _currentHealth; } 
         set 
-        { 
+        {
+            if (!IsEnabled) return;
             _currentHealth = value < 0 ? 0 : value; 
             OnHealthChange(value);
         } 
