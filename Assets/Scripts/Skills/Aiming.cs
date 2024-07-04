@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Aiming : MonoBehaviour
 {
+    [SerializeField] private GameObject _quaterCircle;
     [SerializeField] private Transform FirePosition;
 
     [SerializeField] private float _minAngleZ;
@@ -22,6 +23,7 @@ public class Aiming : MonoBehaviour
     public void StopAiming()
     {
         StopCoroutine(_rotationCoroutine);
+        _quaterCircle.SetActive(false);
         FirePosition.gameObject.SetActive(false);
     }
 
@@ -34,6 +36,7 @@ public class Aiming : MonoBehaviour
 
     IEnumerator RotateCoroutine()
     {
+        _quaterCircle.SetActive(true);
         FirePosition.gameObject.SetActive(true);       
         while (true)
         {
