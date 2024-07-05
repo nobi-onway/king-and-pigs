@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4929994081993249473}
   - component: {fileID: 3637636900826804064}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Modal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 8963499516538082545}
   - component: {fileID: 1380317473964576192}
   - component: {fileID: 7409598901474954709}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

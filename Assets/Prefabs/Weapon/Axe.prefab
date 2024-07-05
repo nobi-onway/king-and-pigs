@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4929994081993249473}
   - component: {fileID: 3637636900826804064}
   - component: {fileID: 6120966771274025653}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Modal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 2881566421864785715}
   - component: {fileID: 103007586728702243}
   - component: {fileID: 1380317473964576192}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
