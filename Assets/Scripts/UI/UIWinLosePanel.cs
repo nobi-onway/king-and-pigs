@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIWinLosePanel : MonoBehaviour
 {
     private CanvasGroup _canvasGroup;
+    [SerializeField]
+    private Text _title;
     private void Start()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
@@ -10,6 +13,7 @@ public class UIWinLosePanel : MonoBehaviour
         LevelManager.Instance.OnStateChange += (state) =>
         {
             EnableUIIf(state == LevelState.winning || state == LevelState.losing);
+            _title.text = state == LevelState.winning ? "Victory" : state == LevelState.losing ? "Game Over" : "";
         };
     }
 
