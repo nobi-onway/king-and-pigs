@@ -13,5 +13,6 @@ public class CauseDamageOnTouch : MonoBehaviour
         if (!healthController.IsEnabled) return;
 
         healthController.CurrentHealth -= _damage;
+        Destroy(gameObject);
     }
 }

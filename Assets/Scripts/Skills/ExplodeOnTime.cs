@@ -57,10 +57,4 @@ public class ExplodeOnTime : MonoBehaviour
 
         healthController.CurrentHealth -= _damage;
     }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(transform.position, _radius);
-    }
 }

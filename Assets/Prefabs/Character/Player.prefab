@@ -308,7 +308,7 @@ MonoBehaviour:
   _firing: {fileID: 4392818978230628621}
   _animator: {fileID: 7022068672728429764}
   _healthController: {fileID: 6818073311000266776}
-  _weaponController: {fileID: 2881566421864785715, guid: 105a3e7f3fd64534497de11ad7533654, type: 3}
+  _weaponController: {fileID: 2881566421864785715, guid: ff436b5987cbdf6428513476d343941f, type: 3}
 --- !u!114 &6818073311000266776
 MonoBehaviour:
   m_ObjectHideFlags: 0
