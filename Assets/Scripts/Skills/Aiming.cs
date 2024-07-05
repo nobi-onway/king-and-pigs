@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Aiming : MonoBehaviour
 {
-    [SerializeField] private GameObject _quaterCircle;
-    [SerializeField] private Transform FirePosition;
+    [SerializeField] private FirePosition _firePosition;
 
     [SerializeField] private float _minAngleZ;
     [SerializeField] private float _maxAngleZ;
@@ -23,27 +22,27 @@ public class Aiming : MonoBehaviour
     public void StopAiming()
     {
         StopCoroutine(_rotationCoroutine);
-        _quaterCircle.SetActive(false);
-        FirePosition.gameObject.SetActive(false);
+        _firePosition.IsActive = false;
     }
 
     private void ResetRotation() 
     {
-        FirePosition.rotation = Quaternion.identity;
+        Vector3 fireEulerAngles = _firePosition.transform.eulerAngles;
+        _firePosition.transform.rotation = Quaternion.Euler(fireEulerAngles.x, fireEulerAngles.y, _minAngleZ);
         _isAimingUp = true;
     }
 
 
     IEnumerator RotateCoroutine()
     {
-        _quaterCircle.SetActive(true);
-        FirePosition.gameObject.SetActive(true);       
+        _firePosition.IsActive = true;       
+
         while (true)
         {
             int direc = _isAimingUp ? 1 : -1; 
-            FirePosition.Rotate(0, 0, _speedRotate  * Time.deltaTime * direc);
-            if (FirePosition.rotation.eulerAngles.z >= _maxAngleZ && _isAimingUp) _isAimingUp = false;
-            else if (FirePosition.rotation.eulerAngles.z <= _minAngleZ) _isAimingUp = true;
+            _firePosition.transform.Rotate(0, 0, _speedRotate  * Time.deltaTime * direc);
+            if (_firePosition.transform.rotation.eulerAngles.z >= _maxAngleZ && _isAimingUp) _isAimingUp = false;
+            else if (_firePosition.transform.rotation.eulerAngles.z <= _minAngleZ) _isAimingUp = true;
             
             yield return new WaitForEndOfFrame();
         }

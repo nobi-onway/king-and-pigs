@@ -94,13 +94,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1376480712561752273}
   - component: {fileID: 1093729103168128156}
+  - component: {fileID: 5207359822884092463}
   m_Layer: 0
   m_Name: Fire Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1376480712561752273
 Transform:
   m_ObjectHideFlags: 0
@@ -160,7 +161,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 1.25, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -220,6 +221,20 @@ LineRenderer:
   m_UseWorldSpace: 0
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &5207359822884092463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250935749046398804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9265560e31b44724e946c78bc1bd4bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lineRenderer: {fileID: 1093729103168128156}
+  _quaterCircle: {fileID: 1431745705115073068}
 --- !u!1 &8266922735881856635
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,8 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02559bc1d9c0a7c4b8ba0538bed49462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quaterCircle: {fileID: 1431745705115073068}
-  FirePosition: {fileID: 1376480712561752273}
+  _firePosition: {fileID: 5207359822884092463}
   _minAngleZ: 1
   _maxAngleZ: 90
   _speedRotate: 30
