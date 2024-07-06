@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour, IController
     private void Dead()
     {
         _healthController.IsEnabled = false;
+        Debug.Log("Dead");
         OnDead?.Invoke();
     }
 }
