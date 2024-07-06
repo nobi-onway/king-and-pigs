@@ -2,28 +2,17 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class CharacterPosition
-{
-    [SerializeField]
-    private Transform _transform;
-    [SerializeField]
-    private GameObject _character;
-    public GameObject Character => _character;
-
-    public void SetUpPosition()
-    {
-        _character.transform.position = _transform.position;
-    }
-}
-
 public class Map : MonoBehaviour
 {
     public int Id { get; private set; }
-    [SerializeField]
-    private List<CharacterPosition> _characterPositionList;
 
+    [SerializeField]
     private List<IController> _characterControllerList;
+
+    [SerializeField]
+    private PlayerController _playerController;
+    [SerializeField]
+    private List<EnemyController> _enemyControllerList;
 
     public event Action OnEnemyDead;
     public event Action OnPlayerDead;
@@ -46,7 +35,7 @@ public class Map : MonoBehaviour
     public void Init(MapSettings mapSettings)
     {
         Id = mapSettings.Id;
-        LoadCharacters();
+        InitCharacters();
     }
 
     private void SetUpMap()
@@ -62,35 +51,33 @@ public class Map : MonoBehaviour
         ResetCharacters();
     }
 
-    private void LoadCharacters()
+    private void InitCharacters()
     {
         _characterControllerList = new List<IController>();
 
-        for(int i = 0; i < _characterPositionList.Count; i++)
+        _characterControllerList.Add(_playerController);
+        for (int i = 0; i < _enemyControllerList.Count; i++)
         {
-            CharacterPosition characterPosition = _characterPositionList[i];
-            IController controllerClone = Instantiate(characterPosition.Character, transform).GetComponent<IController>();
+            _characterControllerList.Add(_enemyControllerList[i]);
+        }
 
-            controllerClone.Init();
-            _characterControllerList.Add(controllerClone);
-            characterPosition.SetUpPosition();
+        for (int i = 0; i < _characterControllerList.Count; i++)
+        {
+            _characterControllerList[i].Init();
         }
     }
 
     private void SetUpEnemyEvent()
     {
-        List<EnemyController> enemyControllers = GetEnemies();
-
-        for(int i = 0; i < enemyControllers.Count; i++)
+        for(int i = 0; i < _enemyControllerList.Count; i++)
         {
-            enemyControllers[i].OnDead += () => OnEnemyDead?.Invoke();
+            _enemyControllerList[i].OnDead += () => OnEnemyDead?.Invoke();
         }
     }
 
     private void SetUpPlayerEvent()
     {
-        PlayerController playerController = GetPlayer();
-        playerController.OnDead += () => OnPlayerDead?.Invoke();
+        _playerController.OnDead += () => OnPlayerDead?.Invoke();
     }
 
     private void ResetCharacters()
@@ -104,40 +91,12 @@ public class Map : MonoBehaviour
         }
     }
 
-    public PlayerController GetPlayer()
-    {
-        PlayerController playerController = null;
-
-        for (int i = 0; i < _characterControllerList.Count; i++)
-        {
-            playerController = _characterControllerList[i].MonoBehaviour.GetComponent<PlayerController>();
-
-            if (playerController) break;
-        }
-
-        return playerController;
-    }
-
-    private List<EnemyController> GetEnemies()
-    {
-        List<EnemyController> enemyControllerList = new List<EnemyController>();
-
-        for (int i = 0; i < _characterControllerList.Count; i++)
-        {
-            EnemyController enemyController = _characterControllerList[i].MonoBehaviour.GetComponent<EnemyController>();
-
-            if (enemyController == null) continue;
-
-            enemyControllerList.Add(enemyController);
-        }
-
-        return enemyControllerList;
-    }
+    public PlayerController GetPlayer() => _playerController;
 
     public int GetAliveEnemies()
     {
         int count = 0;
-        List<EnemyController> enemies = GetEnemies();
+        List<EnemyController> enemies = _enemyControllerList;
 
         for(int i = 0; i < enemies.Count; i++)
         {

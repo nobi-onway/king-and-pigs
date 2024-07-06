@@ -16,16 +16,8 @@ MonoBehaviour:
   - Name: Map 1
     Map: {fileID: 4488685970152569642, guid: ee28c5e9a7e41e14c8a6ca1f1f98c1c0, type: 3}
   - Name: Map 2
-    Map: {fileID: 5491796427118350801, guid: 544a1966a68e954469728d2b56766b6d, type: 3}
+    Map: {fileID: 4488685970152569642, guid: a6983dae3d1007e4a8849a41ec6e5cc4, type: 3}
   - Name: Map 3
-    Map: {fileID: 2267103893473887697, guid: 936efa05157bc0748a32fe34a9e2acd3, type: 3}
+    Map: {fileID: 4488685970152569642, guid: 8e9cd5228df9d0143ab2610f34a0d5e4, type: 3}
   - Name: Map 4
-    Map: {fileID: 824094818574812067, guid: 4063b6ae7436e954ca8ec351dfed24bc, type: 3}
-  - Name: Map 5
-    Map: {fileID: 3979665335148408292, guid: c47d605a4d648bd4290af148e5639a31, type: 3}
-  - Name: Map 6
-    Map: {fileID: 5825291867732092494, guid: fd1000cfc0f9a0d4791c4953a2e53048, type: 3}
-  - Name: Map 7
-    Map: {fileID: 8626343114251788284, guid: 047546246004b4c42bfdb1f550d186a3, type: 3}
-  - Name: Map 8
-    Map: {fileID: 2013088762519841152, guid: bc7b2403476cfe5478bb54b99124fe8c, type: 3}
+    Map: {fileID: 4488685970152569642, guid: 39d4a96de950af247a7aa4e1dd74f2d3, type: 3}
