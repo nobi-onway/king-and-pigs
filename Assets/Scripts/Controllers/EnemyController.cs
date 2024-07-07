@@ -14,13 +14,54 @@ public class EnemyController : MonoBehaviour, IController
 
     public MonoBehaviour MonoBehaviour => this;
 
+    private ControllerState _state;
+    public ControllerState State
+    {
+        get => _state;
+        set
+        {
+            _state = value;
+            OnStateChange?.Invoke(value);
+        }
+    }
+    
+    public event Action<ControllerState> OnStateChange;
+
     public void Init()
+    {
+        InitHeart();
+        InitState();
+        State = ControllerState.idle;
+    }
+    public void InitHeart()
     {
         _healthController.Init();
 
         _healthController.OnHealthChange += (currentHealth) =>
         {
             StartCoroutine(GotHit(currentHealth));
+            if (currentHealth == 0) State = ControllerState.dead;
+        };
+    }
+    private void InitState()
+    {
+        OnStateChange += (state) =>
+        {
+            switch (state)
+            {
+                case ControllerState.idle:
+                    Idle();
+                    break;
+                case ControllerState.running:
+                    Running();
+                    break;
+                case ControllerState.dead:
+                    break;
+                case ControllerState.winning:
+                    _healthController.IsEnabled = false;
+                    break;
+                default:break;
+            }
         };
     }
 
@@ -39,13 +80,19 @@ public class EnemyController : MonoBehaviour, IController
 
         if (currentHealth <= 0) Dead();
     }
-
+    private void Idle()
+    {
+        _animator.Play("Idle");
+    }
+    private void Running()
+    {
+        _animator.Play("run");
+    }
     private void Dead()
     {
         _animator.Play("dead");
         _healthController.IsEnabled = false;
         IsDead = true;
-        Debug.Log("Dead");
         OnDead?.Invoke();
     }
 

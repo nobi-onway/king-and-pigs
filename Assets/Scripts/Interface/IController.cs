@@ -8,4 +8,4 @@ public interface IController
     public void Reset();
 }
 
-public enum ControllerState { idle, aiming, firing, dead, winning, losing }
+public enum ControllerState { idle, aiming, firing, dead, winning, losing,running, hide, show }
