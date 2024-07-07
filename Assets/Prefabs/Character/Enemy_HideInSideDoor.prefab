@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1577634995
-  m_SortingLayer: 5
+  m_SortingLayerID: -728999971
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -106791514, guid: 9b3f53478f5654f4887342deb1b7aece, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -321,7 +321,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 2
 --- !u!114 &4826968585517898936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,8 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43e92eae7c82b164ca30ef2d920fca50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animDoor: {fileID: 5866033417530807760}
-  _spriteControl: {fileID: 2336874829048529327}
-  _enemyController: {fileID: 8981166358515709850}
-  _timeStartHide: 6
-  _timeEndHide: 3
+  _animHidePlace: {fileID: 5866033417530807760}
+  _spriteRenderer: {fileID: 287433146410132229}
+  _healthController: {fileID: 4826968585517898936}
+  _boxCollider2D: {fileID: 9192724668059082427}

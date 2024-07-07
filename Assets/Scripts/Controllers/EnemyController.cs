@@ -24,15 +24,7 @@ public class EnemyController : MonoBehaviour, IController
             OnStateChange?.Invoke(value);
         }
     }
-    private bool _isActiveObj;
-    public bool IsActiveObj 
-    {
-        get => _isActiveObj; set 
-        {
-            _isActiveObj = value;
-            _healthController.IsEnabled = _isActiveObj;
-        } 
-    }
+    
     public event Action<ControllerState> OnStateChange;
 
     public void Init()
