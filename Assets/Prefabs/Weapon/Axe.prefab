@@ -223,6 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e527c5b57f85c043ad829611bf7e8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroyOnBouncy: {fileID: 103007586728702243}
+  _baseAttackSkill: {fileID: 1380317473964576192}
 --- !u!114 &103007586728702243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058ddf009c0e771489f26aabaf3d3659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxInBouncy: 5
 --- !u!114 &1380317473964576192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,4 +249,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dff9a51a9f86e3468d5d186842a99ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 1

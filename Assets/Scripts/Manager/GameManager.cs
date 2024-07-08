@@ -35,13 +35,13 @@ public class GameManager : MonoBehaviour, IStateManager<GameState>
             switch (state)
             {
                 case GameState.menu:
-                    SceneManager.LoadScene("MenuScene");
+                    LoadScene("MenuScene");
                     break;
                 case GameState.gaming:
-                    SceneManager.LoadScene("GameScene");
+                    LoadScene("GameScene");
                     break;
                 case GameState.shopping:
-
+                    Debug.Log("Shopping");
                     break;
                 case GameState.setting:
 
@@ -50,6 +50,12 @@ public class GameManager : MonoBehaviour, IStateManager<GameState>
                     break;
             }
         };
+    }
+
+    private void LoadScene(string sceneName)
+    {
+        if (SceneManager.GetActiveScene().name == sceneName) return;
+        SceneManager.LoadScene(sceneName);
     }
 }
 

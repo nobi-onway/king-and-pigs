@@ -6,6 +6,7 @@ using UnityEngine;
 public class Data : ScriptableObject
 {
     public List<MapSettings> MapList;
+    public List<WeaponSettings> WeaponList;
 }
 
 [Serializable]

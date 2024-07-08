@@ -245,6 +245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e527c5b57f85c043ad829611bf7e8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroyOnBouncy: {fileID: 103007586728702243}
+  _baseAttackSkill: {fileID: 84273021262488881}
 --- !u!114 &84273021262488881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,7 +261,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timer: 2
   _radius: 2
-  _damage: 1
   _animator: {fileID: 2024950297331597640}
 --- !u!114 &103007586728702243
 MonoBehaviour:
@@ -273,4 +274,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058ddf009c0e771489f26aabaf3d3659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxInBouncy: 3
