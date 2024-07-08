@@ -14,15 +14,12 @@ public class HolderWeapon : MonoBehaviour
     [SerializeField]
     private Text _description;
 
-    [SerializeField]
-    private WeaponSettings _weaponSettings;
-
-    private void Start()
+    public void Init(WeaponSettings weaponSettings)
     {
-        _name.text = _weaponSettings.Name;
-        _image.sprite = _weaponSettings.Image;
-        _attackValue.text = _weaponSettings.AttackValue.ToString();
-        _bouncyValue.text = _weaponSettings.BouncyValue.ToString();
-        _description.text = $"Note: {_weaponSettings.Description}";
+        _name.text = weaponSettings.Name;
+        _image.sprite = weaponSettings.Image;
+        _attackValue.text = weaponSettings.AttackValue.ToString();
+        _bouncyValue.text = weaponSettings.BouncyValue.ToString();
+        _description.text = $"Note: {weaponSettings.Description}";
     }
 }

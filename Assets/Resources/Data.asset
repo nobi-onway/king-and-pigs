@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MapList:
   - Name: Map 1
-    Map: {fileID: 3246785098478564091, guid: 5f024027ed391ac42b41653576970fa8, type: 3}
+    Map: {fileID: 4488685970152569642, guid: ee28c5e9a7e41e14c8a6ca1f1f98c1c0, type: 3}
   - Name: Map 2
     Map: {fileID: 4488685970152569642, guid: a6983dae3d1007e4a8849a41ec6e5cc4, type: 3}
   - Name: Map 3
@@ -29,3 +29,7 @@ MonoBehaviour:
     Map: {fileID: 2013088762519841152, guid: bc7b2403476cfe5478bb54b99124fe8c, type: 3}
   - Name: Map 8
     Map: {fileID: 3246785098478564091, guid: 5f024027ed391ac42b41653576970fa8, type: 3}
+  WeaponList:
+  - {fileID: 11400000, guid: 2c7ddb34a84179a4fb5e5fcfd7e8e39f, type: 2}
+  - {fileID: 11400000, guid: 85df81cc0c0e85944abee51e57d791f7, type: 2}
+  - {fileID: 11400000, guid: 5f201dbb03df7a043925cfe07d3ab372, type: 2}

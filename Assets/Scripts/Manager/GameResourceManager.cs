@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameResourceManager : MonoBehaviour
@@ -24,4 +25,7 @@ public class GameResourceManager : MonoBehaviour
     {
         return _data.MapList[index];
     }
+
+    public List<WeaponSettings> GetWeaponSettingsList() => _data.WeaponList;
+
 }

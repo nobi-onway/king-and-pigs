@@ -14,8 +14,9 @@ public class PlayerController : MonoBehaviour, IController
     [SerializeField]
     private HealthController _healthController;
 
-    [SerializeField] 
-    private WeaponController _weaponController;
+    [SerializeField]
+    private WeaponInventory _weaponInventory;
+    private WeaponController _weaponController => _weaponInventory.GetEquipedWeaponController();
     public MonoBehaviour MonoBehaviour => this;
 
     public event Action OnDead;

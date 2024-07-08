@@ -10,4 +10,5 @@ public class WeaponSettings : ScriptableObject
     public int AttackValue;
     public int BouncyValue;
     public string Description;
+    public WeaponController Controller;
 }

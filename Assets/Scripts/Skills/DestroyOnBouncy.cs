@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class DestroyOnBouncy : MonoBehaviour
 {
-    [SerializeField]
-    private int _maxInBouncy;
+    public int MaxInBouncy;
     private int _currentBouncy;
 
     private void Start()
@@ -17,6 +16,6 @@ public class DestroyOnBouncy : MonoBehaviour
 
         _currentBouncy++;
 
-        if (_currentBouncy >= _maxInBouncy) Destroy(gameObject);
+        if (_currentBouncy >= MaxInBouncy) Destroy(gameObject);
     }
 }

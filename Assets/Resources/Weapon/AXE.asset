@@ -17,3 +17,4 @@ MonoBehaviour:
   AttackValue: 1
   BouncyValue: 5
   Description: Just normal axe
+  Controller: {fileID: 2881566421864785715, guid: a077be646ef7f0b4f829ce4f495ad73f, type: 3}

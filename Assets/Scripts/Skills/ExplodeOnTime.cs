@@ -1,14 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-public class ExplodeOnTime : MonoBehaviour
+public class ExplodeOnTime : BaseAttackSkill
 {
     [SerializeField]
     private float _timer;
     [SerializeField]
     private float _radius;
-    [SerializeField]
-    private int _damage;
     [SerializeField]
     private Animator _animator;
 
@@ -47,14 +45,5 @@ public class ExplodeOnTime : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         Destroy(gameObject);
-    }
-
-    private void TakeDamgeOn(Collider2D collider)
-    {
-        HealthController healthController = collider.GetComponent<HealthController>();
-        if (!healthController) return;
-        if (!healthController.IsEnabled) return;
-
-        healthController.CurrentHealth -= _damage;
     }
 }

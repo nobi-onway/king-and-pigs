@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec0f4773d2a48d458f26e858a3fac84, type: 3}
+  m_Name: Bomb
+  m_EditorClassIdentifier: 
+  Name: Bomb
+  Image: {fileID: 21300000, guid: 74e06f5efb713424cb786d192db7f6d7, type: 3}
+  AttackValue: 1
+  BouncyValue: 2
+  Description: explode after 2 seconds
+  Controller: {fileID: 2881566421864785715, guid: 105a3e7f3fd64534497de11ad7533654, type: 3}
