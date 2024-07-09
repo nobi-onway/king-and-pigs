@@ -8,8 +8,6 @@ public class EnemyController : MonoBehaviour, IController
     private Animator _animator;
     [SerializeField]
     private HealthController _healthController;
-    [SerializeField]
-    private BoxCollider2D _collider2D;
 
     public event Action OnDead;
     public bool IsDead { get; private set; }
@@ -70,7 +68,6 @@ public class EnemyController : MonoBehaviour, IController
     public void Reset()
     {
         _healthController.Init();
-        _collider2D.enabled = true;
         IsDead = false;
         OnDead = null;
     }
@@ -91,13 +88,13 @@ public class EnemyController : MonoBehaviour, IController
     {
         _animator.Play("run");
     }
-    private void Dead()
+    private IEnumerator Dead()
     {
         _animator.Play("dead");
         _healthController.IsEnabled = false;
-        _collider2D.enabled = false;
         IsDead = true;
         OnDead?.Invoke();
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+        Destroy(gameObject);
     }
-
 }

@@ -1479,7 +1479,7 @@ GameObject:
   - component: {fileID: 7473037809084357857}
   - component: {fileID: 3246785098478564091}
   m_Layer: 0
-  m_Name: Map_test_2second _5
+  m_Name: Map 15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1494,7 +1494,7 @@ Transform:
   m_GameObject: {fileID: 7998750975688673396}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.31, y: -0.39, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1730,7 +1730,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2763893863878278631, guid: 47d4b60987dedd84180d2ec34a927e74, type: 3}
       propertyPath: m_Offset.x
-      value: 0.11
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3574738355609245150, guid: 47d4b60987dedd84180d2ec34a927e74, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3574738355609245150, guid: 47d4b60987dedd84180d2ec34a927e74, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3574738355609245150, guid: 47d4b60987dedd84180d2ec34a927e74, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150795765990930022, guid: 47d4b60987dedd84180d2ec34a927e74, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8266922735881856635, guid: 47d4b60987dedd84180d2ec34a927e74, type: 3}
       propertyPath: m_Name
