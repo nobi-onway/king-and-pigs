@@ -259,7 +259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c7bef699385a5498df964fccf48ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timer: 2
+  Damage: 0
+  _timer: 1
   _radius: 2
   _animator: {fileID: 2024950297331597640}
 --- !u!114 &103007586728702243
@@ -274,3 +275,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058ddf009c0e771489f26aabaf3d3659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxInBouncy: 0

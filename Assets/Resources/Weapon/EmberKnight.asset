@@ -15,6 +15,6 @@ MonoBehaviour:
   Name: Ember Knight
   Image: {fileID: 21300000, guid: 4c17a768b768876488c7e9024f47115c, type: 3}
   AttackValue: 1
-  BouncyValue: 2
+  BouncyValue: 3
   Description: ability to spit fire
   Controller: {fileID: 2881566421864785715, guid: ff436b5987cbdf6428513476d343941f, type: 3}
