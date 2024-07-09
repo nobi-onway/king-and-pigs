@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour, IStateManager<LevelState>
     private LevelController _levelController;
     [SerializeField]
     private HealthBarController _healthBarController;
-    private int _currentLevel => /*PlayerPrefs.GetInt("current_level", 1)*/ 1;
+    private int _currentLevel => PlayerPrefs.GetInt("current_level", 1);
 
     private LevelState _currentState;
 
@@ -55,10 +55,9 @@ public class LevelManager : MonoBehaviour, IStateManager<LevelState>
                     break;
                 case LevelState.nextLevel:
                     int currentLevel = _currentLevel + 1;
-                    //if (currentLevel > GameResourceManager.Instance.GetMapCount()) currentLevel = 1;
-                    //PlayerPrefs.SetInt("current_level", currentLevel);
+                    if (currentLevel > GameResourceManager.Instance.GetMapCount()) currentLevel = 1;
+                    PlayerPrefs.SetInt("current_level", currentLevel);
                     State = LevelState.playing;
-                    Debug.Log("Next Level");
                     break;
                 default:
                     break;

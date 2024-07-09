@@ -78,7 +78,7 @@ public class EnemyController : MonoBehaviour, IController
 
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
 
-        if (currentHealth <= 0) Dead();
+        if (currentHealth <= 0) StartCoroutine(Dead());
     }
     private void Idle()
     {
