@@ -5996,6 +5996,7 @@ MonoBehaviour:
   _nextButton: {fileID: 2071176435}
   _previousButton: {fileID: 8498313011819077629}
   _equipButton: {fileID: 6787493309072824799}
+  _buyButton: {fileID: 0}
 --- !u!114 &5267981034885144782
 MonoBehaviour:
   m_ObjectHideFlags: 0
