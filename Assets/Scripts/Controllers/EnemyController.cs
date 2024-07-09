@@ -78,7 +78,7 @@ public class EnemyController : MonoBehaviour, IController
 
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
 
-        if (currentHealth <= 0) Dead();
+        if (currentHealth <= 0) StartCoroutine(Dead());
     }
     private void Idle()
     {
@@ -88,12 +88,13 @@ public class EnemyController : MonoBehaviour, IController
     {
         _animator.Play("run");
     }
-    private void Dead()
+    private IEnumerator Dead()
     {
         _animator.Play("dead");
         _healthController.IsEnabled = false;
         IsDead = true;
         OnDead?.Invoke();
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+        Destroy(gameObject);
     }
-
 }

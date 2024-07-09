@@ -15,6 +15,6 @@ MonoBehaviour:
   Name: AXE
   Image: {fileID: 21300000, guid: 0a369c20f2082bf4e96ebda4f85d68e3, type: 3}
   AttackValue: 1
-  BouncyValue: 5
+  BouncyValue: 7
   Description: Just normal axe
   Controller: {fileID: 2881566421864785715, guid: a077be646ef7f0b4f829ce4f495ad73f, type: 3}

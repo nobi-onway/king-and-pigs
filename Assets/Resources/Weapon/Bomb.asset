@@ -15,6 +15,6 @@ MonoBehaviour:
   Name: Bomb
   Image: {fileID: 21300000, guid: 74e06f5efb713424cb786d192db7f6d7, type: 3}
   AttackValue: 1
-  BouncyValue: 2
+  BouncyValue: 5
   Description: explode after 2 seconds
   Controller: {fileID: 2881566421864785715, guid: 105a3e7f3fd64534497de11ad7533654, type: 3}

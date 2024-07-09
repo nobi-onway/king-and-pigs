@@ -26,6 +26,8 @@ public class GameResourceManager : MonoBehaviour
         return _data.MapList[index];
     }
 
+    public int GetMapCount() => _data.MapList.Count;
+
     public List<WeaponSettings> GetWeaponSettingsList() => _data.WeaponList;
 
 }

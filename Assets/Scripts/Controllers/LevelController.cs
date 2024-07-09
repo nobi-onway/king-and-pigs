@@ -21,7 +21,7 @@ public class LevelController : MonoBehaviour
 
     private Map GetLoadedMapAtLevel(MapSettings mapSettings)
     {
-        return _loadedMapList.Find(map => map.Id == mapSettings.Id);
+        return /*_loadedMapList.Find(map => map.Id == mapSettings.Id)*/ null;
     }
 
     public void LoadMap(int level)

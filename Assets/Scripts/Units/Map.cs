@@ -46,9 +46,10 @@ public class Map : MonoBehaviour
 
     private void ResetMap()
     {
-        OnEnemyDead = null;
-        OnPlayerDead = null;
-        ResetCharacters();
+        //OnEnemyDead = null;
+        //OnPlayerDead = null;
+        //ResetCharacters();
+        Destroy(gameObject);
     }
 
     private void InitCharacters()

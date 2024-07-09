@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour, IController
 
         _listenInput.OnPointerUp += () =>
         {
+            if (_state != ControllerState.aiming) return;
             State = ControllerState.firing;
         };
     }
