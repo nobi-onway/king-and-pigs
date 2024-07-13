@@ -639,6 +639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelController: {fileID: 1475180599}
   _healthBarController: {fileID: 2098773669}
+  _uiLevelInfo: {fileID: 5111751200451477587}
 --- !u!4 &563734532
 Transform:
   m_ObjectHideFlags: 0
@@ -1352,11 +1353,62 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Win_Lose
       objectReference: {fileID: 0}
+    - target: {fileID: 4632277405645582409, guid: e843c770345560341b1b88e8731e7168, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632277405645582409, guid: e843c770345560341b1b88e8731e7168, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632277405645582409, guid: e843c770345560341b1b88e8731e7168, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632277405645582409, guid: e843c770345560341b1b88e8731e7168, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632277405645582409, guid: e843c770345560341b1b88e8731e7168, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628020623408392071, guid: e843c770345560341b1b88e8731e7168, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628020623408392071, guid: e843c770345560341b1b88e8731e7168, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628020623408392071, guid: e843c770345560341b1b88e8731e7168, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628020623408392071, guid: e843c770345560341b1b88e8731e7168, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628020623408392071, guid: e843c770345560341b1b88e8731e7168, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e843c770345560341b1b88e8731e7168, type: 3}
+--- !u!114 &5111751200451477587 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6801258470147577548, guid: e843c770345560341b1b88e8731e7168, type: 3}
+  m_PrefabInstance: {fileID: 5111751200451477586}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05701d346cb38894c87f948f9633f358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

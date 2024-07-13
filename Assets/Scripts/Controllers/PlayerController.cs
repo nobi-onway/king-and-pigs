@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour, IController
     [SerializeField]
     private HealthController _healthController;
 
+    public int AttackCount;
+
     [SerializeField]
     private WeaponInventory _weaponInventory;
     private WeaponController _weaponController => _weaponInventory.GetEquipedWeaponController();
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour, IController
         InitState();
         InitListenInput();
         InitHealth();
+        AttackCount = 0;
     }
 
     private void InitState()
@@ -78,6 +81,7 @@ public class PlayerController : MonoBehaviour, IController
         _aiming.StopAiming();
         _firing.Fire(_weaponController);
         _animator.Play("attack");
+        AttackCount++;
     }
 
     private void InitHealth()
@@ -109,6 +113,7 @@ public class PlayerController : MonoBehaviour, IController
     {
         _healthController.Init();
         OnDead = null;
+        AttackCount = 0;
     }
 
     private void Dead()

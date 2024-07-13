@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c76d380cdfe5549828f7b556ede7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rorateSpeed: 20
+  _rorateSpeed: 8
 --- !u!1 &4478036273976063995
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058ddf009c0e771489f26aabaf3d3659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxInBouncy: 0
 --- !u!114 &1380317473964576192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dff9a51a9f86e3468d5d186842a99ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 0
 --- !u!114 &483975142380451348
 MonoBehaviour:
   m_ObjectHideFlags: 0

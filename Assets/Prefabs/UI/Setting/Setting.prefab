@@ -274,8 +274,9 @@ GameObject:
   - component: {fileID: 8291831613260935130}
   - component: {fileID: 5381818252467719898}
   - component: {fileID: 1331996635657688438}
+  - component: {fileID: 1787537985683850457}
   m_Layer: 5
-  m_Name: Volumn_Off_Btn
+  m_Name: Switch_Sound_Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -396,6 +397,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1787537985683850457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379305315941565442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c2c09f634bc2447bb0e3d4418ea7d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imagge: {fileID: 967046938421354504}
+  _soundOpenSprite: {fileID: 21300000, guid: d3889051db1be7449bd17c6483df84b6, type: 3}
+  _soundCloseSprite: {fileID: 21300000, guid: d93b1af3d94862440b79346d6cb00131, type: 3}
 --- !u!1 &7332791932512113881
 GameObject:
   m_ObjectHideFlags: 0
