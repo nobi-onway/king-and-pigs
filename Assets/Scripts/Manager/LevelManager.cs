@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour, IStateManager<LevelState>
     private LevelController _levelController;
     [SerializeField]
     private HealthBarController _healthBarController;
+    [SerializeField]
+    private UILevelInfo _uiLevelInfo;
     private int _currentLevel => PlayerPrefs.GetInt("current_level", 1);
 
     private LevelState _currentState;
@@ -49,9 +51,11 @@ public class LevelManager : MonoBehaviour, IStateManager<LevelState>
                     break;
                 case LevelState.losing:
                     Debug.Log("Losing");
+                    _uiLevelInfo.UpdateUI(GetPlayerAttackCount(), GetPlayerCurrentHealth());
                     break;
                 case LevelState.winning:
                     Debug.Log("Winning");
+                    _uiLevelInfo.UpdateUI(GetPlayerAttackCount(), GetPlayerCurrentHealth());
                     break;
                 case LevelState.nextLevel:
                     int currentLevel = _currentLevel + 1;
@@ -87,6 +91,9 @@ public class LevelManager : MonoBehaviour, IStateManager<LevelState>
             _healthBarController.Init(healthController.CurrentHealth);
         }
     }
+
+    private int GetPlayerAttackCount() => _levelController.GetMap().GetPlayer().AttackCount;
+    private int GetPlayerCurrentHealth() => _levelController.GetMap().GetPlayer().GetComponent<HealthController>().CurrentHealth;
 }
 
 public enum LevelState { playing, losing, winning, nextLevel }

@@ -1065,7 +1065,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0b58ff04f27805b42a8f1efeb35b5205, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1181,7 +1181,6 @@ MonoBehaviour:
   _bgAudioClipList:
   - GameState: 1
     AudioClip: {fileID: 8300000, guid: 0b58ff04f27805b42a8f1efeb35b5205, type: 3}
-  _audioSource: {fileID: 971011280}
 --- !u!1001 &1004709073
 PrefabInstance:
   m_ObjectHideFlags: 0

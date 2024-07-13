@@ -7,6 +7,23 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class SfxManager : MonoBehaviour
 {
+    private bool _isOpenSound;
+    public bool IsOpenSound
+    {
+        get => _isOpenSound;
+        set
+        {
+            _isOpenSound = value;
+
+            if (_isOpenSound)
+            {
+                if (_audioSource.clip == null) return;
+                _audioSource.Play();
+            }
+            if (!_isOpenSound) _audioSource.Pause();
+        }
+    }
+
     [SerializeField]
     private List<BackgroundAudio> _bgAudioClipList;
     private AudioSource _audioSource;
@@ -28,6 +45,7 @@ public class SfxManager : MonoBehaviour
     private void OnEnable()
     {
         _audioSource = GetComponent<AudioSource>();
+        IsOpenSound = true;
     }
 
     private void Start()
@@ -37,8 +55,15 @@ public class SfxManager : MonoBehaviour
 
     private void PlaySound(GameState gameState)
     {
+        if (!IsOpenSound) return;
+
         BackgroundAudio backgroundAudioClip = _bgAudioClipList.Find(bgAudioClip => bgAudioClip.GameState == gameState);
-        if (backgroundAudioClip == null) return;
+        if (backgroundAudioClip == null)
+        {
+            _audioSource.Stop();
+            _audioSource.clip = null;
+            return;
+        }
         _audioSource.clip = backgroundAudioClip.AudioClip;
         _audioSource.Play();
     }
