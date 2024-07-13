@@ -51,5 +51,9 @@ MonoBehaviour:
     Map: {fileID: 6499608663447813776, guid: 6bcec971a4fa3fa4fa1894e480141d5f, type: 3}
   WeaponList:
   - {fileID: 11400000, guid: 2c7ddb34a84179a4fb5e5fcfd7e8e39f, type: 2}
+  - {fileID: 11400000, guid: 370c55dbb7a465244b628430bcc94969, type: 2}
+  - {fileID: 11400000, guid: a93012b863aabb64da22f1207d7bc117, type: 2}
   - {fileID: 11400000, guid: 85df81cc0c0e85944abee51e57d791f7, type: 2}
   - {fileID: 11400000, guid: 5f201dbb03df7a043925cfe07d3ab372, type: 2}
+  - {fileID: 11400000, guid: db0efe5862597ee4ca12d7998cfb5fe9, type: 2}
+  - {fileID: 11400000, guid: bbbf22340923eae4eb2ca86bfffc566f, type: 2}
