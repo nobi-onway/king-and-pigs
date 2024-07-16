@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec0f4773d2a48d458f26e858a3fac84, type: 3}
+  m_Name: Laser Ring
+  m_EditorClassIdentifier: 
+  Name: Laser Ring
+  Image: {fileID: 21300000, guid: 8b148274096a8114cba2886a1ef83d46, type: 3}
+  AttackValue: 3
+  BouncyValue: 6
+  Description: powerful laser ring
+  Controller: {fileID: 1201373588849735977, guid: 77c22f10942101d4ca36e793c7b02a30, type: 3}
